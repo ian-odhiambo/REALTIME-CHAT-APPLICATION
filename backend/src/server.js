@@ -10,18 +10,6 @@ app.get("/", (req, res) => {
     res.send("hello world!!");
 });
 
-app.get("/api/v1/signupRoute", (req, res) =>{
-    console.log("sign up Route");
-});
 
-app.get("/api/v1/loginRoute", (req, res) =>{
-    console.log("Login Route");
-});
-
-app.get("/api/v1/logOutRoute", (req, res) =>{
-    console.log("Log Out Route");
-})
-
-app.get
 
 app.listen(PORT,() => console.log(`Server Running on port ${PORT}`));
