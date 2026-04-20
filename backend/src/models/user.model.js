@@ -13,6 +13,15 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true,
-        min:lenght:6
+        minlenght:6
+    },
+    gender:{
+        type:String,
+        required:true,
+        enum:["male","female"]
+    },
+    profilePic:{
+        type:String,
+        default:""
     }
 });
