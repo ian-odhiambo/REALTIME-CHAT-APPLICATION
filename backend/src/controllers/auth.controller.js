@@ -12,6 +12,9 @@ export const signUp = (req, res) => {
         if(user) {
             return res.status(400).json({error:"Username already exists"})
         }
+        //Hashed passwords here
+        //https://avatar-placeholder.iran.liara.run/
+        const boyPtofilePic = `https://avatar.iran.liara.run/public/boy?username=Scott`
 
     }catch(error){
 
