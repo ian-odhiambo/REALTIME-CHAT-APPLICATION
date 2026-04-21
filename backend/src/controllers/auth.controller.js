@@ -1,6 +1,6 @@
-import User from "../models/user.model";
+import User from "../models/user.model.js";
 
-export const signUp = (req, res) => {
+export const signUp = async (req, res) => {
     try{
         const {fullName, username, password, confirmPassword} = req.body;
 
@@ -15,8 +15,8 @@ export const signUp = (req, res) => {
         //Hashed passwords here
         //https://avatar-placeholder.iran.liara.run/
 
-        const boyPtofilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`
-        const girlPtofilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`
+        const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`
+        const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`
 
         const newUser = new User({
             fullName,
