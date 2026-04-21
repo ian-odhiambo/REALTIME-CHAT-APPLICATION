@@ -14,16 +14,21 @@ export const signUp = (req, res) => {
         }
         //Hashed passwords here
         //https://avatar-placeholder.iran.liara.run/
+
         const boyPtofilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`
         const girlPtofilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`
 
         const newUser = new User({
-            fullName:fullName,
-            username:username,
-            password:password,
-            gender:gender,
-            profilePic:profilePic
+            fullName,
+            username,
+            password,
+            gender,
+            profilePic: gender === "male" ? boyProfilePic : girlProfilePic
         })
+
+        await newUser.save():
+
+        res.status
 
     }catch(error){
 
