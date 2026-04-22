@@ -13,6 +13,8 @@ export const signUp = async (req, res) => {
             return res.status(400).json({error:"Username already exists"})
         }
         //Hashed passwords here
+        const salt = await bycriptjs.gensalt(10)
+        const hashedPassword = await bycript.hash(password, salt)
         //https://avatar-placeholder.iran.liara.run/
 
         const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`
