@@ -14,7 +14,7 @@ export const signUp = async (req, res) => {
             return res.status(400).json({error:"Username already exists"})
         }
         //Hashed passwords here
-        const salt = await bcryptjs.genSalt(10)
+        const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt);
         //https://avatar-placeholder.iran.liara.run/
 
