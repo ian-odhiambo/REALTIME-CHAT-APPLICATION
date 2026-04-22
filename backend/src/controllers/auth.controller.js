@@ -1,3 +1,4 @@
+import bcryptjs from "bcryptjs";
 import User from "../models/user.model.js";
 
 export const signUp = async (req, res) => {
@@ -23,7 +24,7 @@ export const signUp = async (req, res) => {
         const newUser = new User({
             fullName,
             username,
-            password,
+            password: hashedPassword,
             gender,
             profilePic: gender === "male" ? boyProfilePic : girlProfilePic
         })
