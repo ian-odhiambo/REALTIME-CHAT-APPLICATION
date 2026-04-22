@@ -30,6 +30,7 @@ export const signUp = async (req, res) => {
         })
 
         if(newUser) {
+            //Generate JWT token here
             await newUser.save();
 
         res.status(201).json({
@@ -38,6 +39,8 @@ export const signUp = async (req, res) => {
             username: newUser.username,
             profilePic: newUser.profilePic
         });
+        } else{
+            res.status(400).json({error:"Invalid user data"});
         }
 
     }catch(error){
