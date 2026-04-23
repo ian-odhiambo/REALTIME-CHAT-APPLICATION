@@ -80,6 +80,7 @@ export const logOut = async (req, res) => {
    try{
 
    }catch{
-    
+    console.log("Error in Login controller", error.message);
+   res.status(500).json({error: "Internal Server Error"});
    }
 }
