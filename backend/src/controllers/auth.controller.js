@@ -56,6 +56,10 @@ export const login = async (req, res) => {
     const{username, password} = req.body;
     const user = await User.findOne({username});
     const isPasswordCorrect = await bycript.compare(password, user?.password || "");
+
+    if(!user || !isPasswordCorrect) {
+        return res.status(400).json({error: "Invalid credentials"});
+    }
    }catch(error){
    console.log("Error in Login controller", error.message);
    res.status(500).json({error: "Internal Server Error"});
