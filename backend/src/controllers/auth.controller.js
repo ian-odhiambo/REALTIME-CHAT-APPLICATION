@@ -76,6 +76,10 @@ export const login = async (req, res) => {
    }
 }
 
-export const logOut = (req, res) => {
-    console.log("LogOut");
+export const logOut = async (req, res) => {
+   try{
+
+   }catch{
+    
+   }
 }
