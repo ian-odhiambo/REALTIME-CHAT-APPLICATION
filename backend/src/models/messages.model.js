@@ -15,4 +15,9 @@ const messageSchema = new mongoose.Schema({
         type:String,
         required: true
     }
-});
+},
+//timestamps introduce by default- craeted at and updated at fields
+{
+    timestamps: true
+}
+);
