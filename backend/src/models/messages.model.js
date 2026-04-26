@@ -16,8 +16,12 @@ const messageSchema = new mongoose.Schema({
         required: true
     }
 },
-//timestamps introduce by default- craeted at and updated at fields
+//timestamps introduce by default- craeted at and updated at fields for the messages 
 {
     timestamps: true
 }
 );
+
+const Message = mongoose.model("Message", messageSchema);
+
+export default Message;
