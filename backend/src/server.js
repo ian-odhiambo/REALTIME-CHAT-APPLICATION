@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/v1/auth.routes.js";
+import messageRoutes from "./routes/v1/message.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json()); // allows us to parse incoming requests:req.body
 // });
 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/messages", messageRoutes);
 
 app.listen(PORT, () => {
   connectToMongoDB();
