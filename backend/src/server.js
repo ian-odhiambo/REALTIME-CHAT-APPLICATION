@@ -16,7 +16,7 @@ app.use(express.json()); // allows us to parse incoming requests:req.body
 // });
 
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/messages", messageRoutes);
+app.use("/api/v1/message", messageRoutes);
 
 app.listen(PORT, () => {
   connectToMongoDB();
