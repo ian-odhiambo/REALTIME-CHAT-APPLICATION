@@ -13,6 +13,18 @@ export const sendMessage = async (req, res) => {
         participants: [senderId, receiverId],
       })
     }
+
+    const newMessage = new Message({
+      senderId,
+      receiverId,
+      message,
+    })
+
+    if(newMessage) {
+      conversation.message.push(newMessage._id);
+    }
+
+    res.status(201).json(newMessage);
     
   }catch(error){
     console.log("Error in message controller", error.message);
