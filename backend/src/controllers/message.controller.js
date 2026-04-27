@@ -1,29 +1,33 @@
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/messages.model.js";
+import mongoose from "mongoose";
 
 export const sendMessage = async (req, res) => {
-  try{
-    const {message} = req.body;
-    const { id:receiverId } = req.params;
+  try {
+    const { message } = req.body;
+    const { id: receiverId } = req.params;
     const senderId = req.user._id;
 
-    let conversation = await Conversation.findOne({
-      participants: { $all: [senderId, receiverId] },
-    })
+    // Convert receiverId to ObjectId
+    const receiverObjectId = new mongoose.Types.ObjectId(receiverId);
 
-    if(!conversation) {
+    let conversation = await Conversation.findOne({
+      participants: { $all: [senderId, receiverObjectId] },
+    });
+
+    if (!conversation) {
       conversation = await Conversation.create({
-        participants: [senderId, receiverId],
-      })
+        participants: [senderId, receiverObjectId],
+      });
     }
 
     const newMessage = new Message({
       senderId,
-      receiverId,
+      receiverId: receiverObjectId,
       message,
-    })
+    });
 
-    if(newMessage) {
+    if (newMessage) {
       conversation.messages.push(newMessage._id);
     }
 
@@ -31,9 +35,8 @@ export const sendMessage = async (req, res) => {
     await Promise.all([conversation.save(), newMessage.save()]);
 
     res.status(201).json(newMessage);
-    
-  }catch(error){
+  } catch (error) {
     console.log("Error in message controller", error.message);
-    res.status(500).json({error:"internal server error"});
-  }  
+    res.status(500).json({ error: "internal server error" });
+  }
 };
