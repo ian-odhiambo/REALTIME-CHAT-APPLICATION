@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import authRoutes from "./routes/v1/auth.routes.js";
 import messageRoutes from "./routes/v1/message.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
