@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/v1/auth.routes.js";
 import messageRoutes from "./routes/v1/message.routes.js";
+import usersRoutes from "./routes/v1/users.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 const app = express();
 
