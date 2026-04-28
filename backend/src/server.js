@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 //routes
 import authRoutes from "./routes/v1/auth.routes.js";
 import messageRoutes from "./routes/v1/message.routes.js";
-import usersRoutes from "./routes/v1/users.routes.js";
+import userRoutes from "./routes/v1/users.routes.js";
 
 //database import 
 import connectToMongoDB from "./db/connectToMongoDB.js";
@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/message", messageRoutes);
-app.use("/api/v1/users", usersRoutes);
+app.use("/api/v1/users", userRoutes);
 
 app.listen(PORT, () => {
   connectToMongoDB();
