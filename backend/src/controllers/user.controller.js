@@ -2,6 +2,7 @@ export const getUsersforSidebar = async(req, res) => {
     try{
 
         const loggedInUserId = req.user_id
+        const allUsers = await user.find({_id: { $ne: loggedInUserId }})
 
     }catch(error){
         console.log("Error in the getUsersforSidebar", error)
