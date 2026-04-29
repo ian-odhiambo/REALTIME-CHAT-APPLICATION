@@ -4,6 +4,8 @@ export const getUsersforSidebar = async(req, res) => {
         const loggedInUserId = req.user_id
         const filteredUsers = await user.find({_id: { $ne: loggedInUserId }})
 
+        res.status(200).json(filteredUsers)
+
     }catch(error){
         console.log("Error in the getUsersforSidebar", error)
         res.status(500).json({error: "internal server error" })
