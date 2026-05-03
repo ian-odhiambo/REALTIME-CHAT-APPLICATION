@@ -47,4 +47,10 @@ export const sendMessage = async (req, res) => {
 };
 
 
-export default sendMessage;
+export const getMessages = async (req, res) => {
+  try{
+
+  }catch{
+    
+  }
+}
