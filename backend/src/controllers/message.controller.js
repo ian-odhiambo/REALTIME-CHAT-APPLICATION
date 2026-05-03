@@ -53,8 +53,10 @@ export const getMessages = async (req, res) => {
     const senderId = req.user._id;
 
     const conversation = await Conversation.findOne({
-      participants: {$all: [senderId, userToChatId]}
-    })
+      participants: {$all: [senderId, userToChatId]},
+    }).populate("messages")
+
+    res.status(200).json(conversation.messages)
 
   }catch{
     console.log("Error in the getMessages controller:", error.message)
