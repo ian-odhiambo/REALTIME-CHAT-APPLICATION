@@ -49,7 +49,7 @@ export const sendMessage = async (req, res) => {
 
 export const getMessages = async (req, res) => {
   try{
-
+    const{id:userToChatId} = req.params
   }catch{
     console.log("Error in the getMessages controller:", error.message)
     res.status(500).json({error:"internal server error"})
