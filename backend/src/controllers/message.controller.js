@@ -31,10 +31,12 @@ export const sendMessage = async (req, res) => {
       conversation.messages.push(newMessage._id);
     }
 
+    //SOCKET IO WILL BE ADDED HERE 
+
     // Save the conversation and message
     //await conversation.save()
     //await newMessage.save()
-    
+
     await Promise.all([conversation.save(), newMessage.save()]);
 
     res.status(201).json(newMessage);
