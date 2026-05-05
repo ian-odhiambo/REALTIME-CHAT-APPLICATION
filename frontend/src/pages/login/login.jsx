@@ -5,6 +5,9 @@ const login = () => {
             <h1 className="text-3xl font-semibold text-center text-gray-300">
                 Login
             </h1>
+            <span className="text-blue-500">
+                ChatApp
+            </span>
         </div>
     </div>
   )
