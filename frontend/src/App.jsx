@@ -1,11 +1,12 @@
-import './App.css'
+import './App.css';
+import login from "./pages/login/login"
 
 function App() {
 
 
   return (
     <div className='p-4 h-screen flex items-center justify-center'>
-      <LoginPage/>
+      <Login/>
     </div>
   )
 }
