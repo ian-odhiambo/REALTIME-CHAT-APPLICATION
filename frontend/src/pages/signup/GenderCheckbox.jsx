@@ -8,7 +8,7 @@ const GenderCheckbox = () => {
 
             </label>    
         </div>
-        <div classname="form-control">
+        <div className="form-control">
             <label className={'label gap-2 cursor-pointer'}>
                 <span className="label-text">Female</span>
                 <input type="checkbox" className="checkbox border-slate-900" />
