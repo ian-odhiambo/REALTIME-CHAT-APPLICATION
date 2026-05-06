@@ -6,6 +6,35 @@ const SignUp = () => {
           Sign Up <span className="text-blue-500">ChatApp</span>
 
         </h1>
+
+        <form>
+
+          {/* empty input field for the full name */}
+          <div>
+            <label className="label p-2">
+              <span className="text-base label-text">Full name</span>
+            </label>
+            <input type="text" placeholder="John Doe" className="w-full input input-borderd h-10"/>
+          </div>
+          
+          {/* empty input for  */}
+          <div>
+            <label className="label p-2">
+              <span className="text-base label-text">Username</span>
+            </label>
+            <input type="text" placeholder="John Doe" className="w-full input input-borderd h-10"/>
+          </div>
+
+          {/* empty inputs for */}
+          <div>
+            <label className="label p-2">
+              <span className="text-base label-text">Passord</span>
+            </label>
+            <input type="text" placeholder="Enter Password" className="w-full input input-borderd h-10"/>
+          </div>
+
+        </form> 
+
       </div>
     </div>
   )
