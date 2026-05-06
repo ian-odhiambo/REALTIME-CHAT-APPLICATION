@@ -9,8 +9,9 @@ const login = () => {
             <form>
                 <div>
                     <label className="label p-2">
-                        <span className="text-base label-text">username</span>
+                        <span className="text-base label-text">Username</span>
                     </label>
+                    <input type="text" placeholder="Enter username" className="w-full input input-bordered h-10"/>
                 </div>
             </form> 
         </div>
