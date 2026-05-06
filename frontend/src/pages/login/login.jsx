@@ -27,6 +27,10 @@ const login = () => {
                     className="w-full input input-bordered h-10"/>
                 </div>
 
+                <a href="#" className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block">
+                    {Dont} have an account?
+                </a>
+
             </form> 
         </div>
     </div>
