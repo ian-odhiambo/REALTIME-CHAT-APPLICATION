@@ -53,6 +53,14 @@ const SignUp = () => {
             className="w-full input input-borderd h-10"/>
           </div>
 
+          {/* GENDER CHECKBOX WILL COME HERE */}
+          <a className="text-sm hover:underline hover:text-blue-600" href="#">
+            Already have an account?
+          </a>
+          <div>
+            <button className="btn btn-block btn-sm mt-2 border-slate-700">Sign Up</button>
+          </div>
+
         </form> 
 
       </div>
