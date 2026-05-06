@@ -73,7 +73,7 @@ const SignUp = () => {
 export default SignUp;
 
 
-//I am commenting it out to maintain familiarity with the steps because as i progress, this ile changes entirely
+//I am commenting it out to maintain familiarity with the steps because as i progress, this ile changes entirely, this is a starter code for the signup component
 // import GenderCheckbox from "./GenderCheckbox"
 // const SignUp = () => {
 //   return (
