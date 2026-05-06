@@ -33,6 +33,14 @@ const SignUp = () => {
             <input type="text" placeholder="Enter Password" className="w-full input input-borderd h-10"/>
           </div>
 
+          {/* empty inputs for */}
+          <div>
+            <label className="label p-2">
+              <span className="text-base label-text">Confirm Password</span>
+            </label>
+            <input type="text" placeholder="Confirm Password" className="w-full input input-borderd h-10"/>
+          </div>
+
         </form> 
 
       </div>
