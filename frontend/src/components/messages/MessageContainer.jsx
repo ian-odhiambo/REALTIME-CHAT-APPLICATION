@@ -11,7 +11,7 @@ const MessageContainer = () => {
             </div>
 
             <Messages />
-            {/* <MessagesInput /> */}
+            <MessagesInput />
         </>
     </div>
   );
