@@ -19,4 +19,4 @@ const Conversation = () => {
   )
 }
 
-export default Conversation
+export default Conversation;
