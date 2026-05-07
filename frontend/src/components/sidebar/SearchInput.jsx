@@ -1,5 +1,3 @@
-import React from 'react'
-
 const SearchInput = () => {
   return (
     <form className="flex items-center gap-2">
@@ -11,4 +9,4 @@ const SearchInput = () => {
   )
 }
 
-export default SearchInput
+export default SearchInput;
