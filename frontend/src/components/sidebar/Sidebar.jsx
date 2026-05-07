@@ -7,8 +7,7 @@ const Sidebar = () => {
       <SearchInput />
       <div className="divider px-3"></div>
       <Conversations />
-      {/* <Conversation/>
-        <LogoutButton/> */}
+      <LogoutButton/>
     </div>
   );
 };
