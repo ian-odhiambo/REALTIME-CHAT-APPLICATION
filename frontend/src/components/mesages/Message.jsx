@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Message = () => {
   return (
     <div className="chat chat-end">
@@ -11,7 +9,7 @@ const Message = () => {
             </div>
         </div>
         <div className={'chat-bubble text-white bg-blue-500'}>Hey, How is it going</div>
-        <div className="chat-footer opacity-50 text-xs flex gap-1">Hey, How is it going</div>
+        <div className="chat-footer opacity-50 text-xs flex gap-1">12:47</div>
     </div>
   )
 }
