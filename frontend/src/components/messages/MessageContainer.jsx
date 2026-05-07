@@ -1,4 +1,5 @@
 import Messages from "./Messages";
+
 const MessageContainer = () => {
   return (
     <div className="md:min-w-[450px] flex flex-col">
@@ -13,7 +14,7 @@ const MessageContainer = () => {
             {/* <MessagesInput /> */}
         </>
     </div>
-  )
-}
+  );
+};
 
-export default MessageContainer
+export default MessageContainer;
