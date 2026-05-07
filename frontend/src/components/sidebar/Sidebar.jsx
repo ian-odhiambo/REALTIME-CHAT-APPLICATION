@@ -1,13 +1,13 @@
-import SearchInput from './SearchInput'
-import Conversation from './Conversation'
+import SearchInput from "./SearchInput";
+import Conversations from "./Conversations";
 
 const Sidebar = () => {
   return (
     <div>
-        <SearchInput/>
-        <div className="divider px-3"></div>
-        <Conversation/>
-        {/* <Conversation/>
+      <SearchInput />
+      <div className="divider px-3"></div>
+      <Conversations />
+      {/* <Conversation/>
         <LogoutButton/> */}
     </div>
   );
