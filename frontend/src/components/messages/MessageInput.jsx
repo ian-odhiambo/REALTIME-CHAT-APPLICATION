@@ -3,7 +3,7 @@ import { BsSend } from "react-icons/bs";  // Changed from BaSend to BsSend
 const MessageInput = () => {
   return (
     <form className="px-4 my-3">
-      <div className="w-full ">  
+      <div className="w-full relative">  
         <input 
           type="text"
           placeholder="send a message..." 
