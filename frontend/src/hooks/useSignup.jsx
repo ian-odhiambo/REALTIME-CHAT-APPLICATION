@@ -9,4 +9,16 @@ const useSignup = () => {
   }
 }
 
-export default useSignup
+export default useSignup;
+
+function handleInputErrors({fullName,username,password,confirmPassword,gender}){
+    if(!fullName || !username || !password || !confirmPassword || !gender){
+        toast.error("All fields are required");
+        return false;
+    }
+
+    if(password !== confirmPassword){
+        toast.error("Passwords do not match");
+        return false;
+    }
+}
