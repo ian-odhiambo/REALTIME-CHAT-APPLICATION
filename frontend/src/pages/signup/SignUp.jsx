@@ -26,7 +26,10 @@ const SignUp = () => {
             <input 
             type="text" 
             placeholder="John Doe" 
-            className="w-full input input-borderd h-10"/>
+            className="w-full input input-borderd h-10"
+            value={input.fullName}
+            onChange={(e) => setInput({...input, fullName: e.target.value})}
+            />
           </div>
           
           {/* empty input for username*/}
@@ -37,7 +40,10 @@ const SignUp = () => {
             <input 
             type="text" 
             placeholder="John Doe" 
-            className="w-full input input-borderd h-10"/>
+            className="w-full input input-borderd h-10"
+            value={input.username}
+            onChange={(e) => setInput({...input, username: e.target.value})}
+            />
           </div>
 
           {/* empty inputs for password input*/}
@@ -48,7 +54,10 @@ const SignUp = () => {
             <input 
             type="password" 
             placeholder="Enter Password" 
-            className="w-full input input-borderd h-10"/>
+            className="w-full input input-borderd h-10"
+            value={input.password}
+            onChange={(e) => setInput({...input, password: e.target.value})}
+            />
           </div>
 
           {/* empty inputs for password confirmation*/}
@@ -59,7 +68,10 @@ const SignUp = () => {
             <input 
             type="password" 
             placeholder="Confirm Password" 
-            className="w-full input input-borderd h-10"/>
+            className="w-full input input-borderd h-10"
+            value={input.confirmPassword}
+            onChange={(e) => setInput({...input, confirmPassword: e.target.value})}
+            />
           </div>
 
           {/* GENDER CHECKBOX */}
