@@ -25,29 +25,13 @@ const useSignup = () => {
       const res = await fetch("/api/v1/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName,
-          username,
-          password,
-          confirmPassword,
-          gender,
-        }),
+        body: JSON.stringify({fullName,username,password,confirmPassword,gender,}),
       });
-
-      const text = await res.text();
-      let data;
-      try {
-        data = text ? JSON.parse(text) : {};
-      } catch (e) {
-        data = { error: text };
+      const data = await res.json();
+      if(data.error){
+        throw new Error(data.error)
       }
-
-      if (!res.ok) {
-        toast.error(data?.error || `Signup failed (${res.status})`);
-        return;
-      }
-
-      console.log(data);
+      
     } catch (error) {
       toast.error(error.message);
     } finally {
