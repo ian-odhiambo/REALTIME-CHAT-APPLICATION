@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
-  const { authUser, setAuthUser } = useAuthContext();
+  const { setAuthUser } = useAuthContext();
 
   const signup = async ({
     fullName,
@@ -34,7 +34,8 @@ const useSignup = () => {
       }
       //we will save it to the local storage, this is a code for implementation of just that
       localStorage.setItem("authUser", JSON.stringify(data));
-      //The context value will enable us 
+      //The context value 
+      setAuthUser(data);
       
     } catch (error) {
       toast.error(error.message);
