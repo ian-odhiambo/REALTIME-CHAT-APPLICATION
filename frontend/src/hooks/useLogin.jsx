@@ -1,6 +1,8 @@
 import {useState} from "react";
 const useLogin = () => {
   const[loading, setLoading] = useState(false);
+  const {setAuthUser} =useAuthContext(true);  
+
   const login = async(username, password) =>{
     setLoading(true);
     try{
@@ -13,6 +15,9 @@ const useLogin = () => {
         if(data.error){
             throw new Error(data.error);
         }
+
+        localStorage.setItem("authUser", JSON.stringify(data));
+        setAuthUser(data);
         
     }catch(error){
         toast.error(error.message)
@@ -20,6 +25,7 @@ const useLogin = () => {
         setLoading(false);
     }
   }
+    return {loading, login};
 }
 
 export default useLogin
