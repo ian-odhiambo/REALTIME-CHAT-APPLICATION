@@ -43,7 +43,7 @@ const login = () => {
               placeholder="Enter password"
               className="w-full input input-bordered h-10"
                 value={password}
-                onchange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
