@@ -1,19 +1,37 @@
-import { useState } from 'react';
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
 
-  const signup = async ({ fullName, username, password, confirmPassword, gender }) => {
-    const success = handleInputErrors({ fullName, username, password, confirmPassword, gender });
+  const signup = async ({
+    fullName,
+    username,
+    password,
+    confirmPassword,
+    gender,
+  }) => {
+    const success = handleInputErrors({
+      fullName,
+      username,
+      password,
+      confirmPassword,
+      gender,
+    });
     if (!success) return;
-    
+
     setLoading(true);
     try {
       const res = await fetch("/api/v1/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fullName, username, password, confirmPassword, gender })
+        body: JSON.stringify({
+          fullName,
+          username,
+          password,
+          confirmPassword,
+          gender,
+        }),
       });
 
       const text = await res.text();
@@ -35,14 +53,20 @@ const useSignup = () => {
     } finally {
       setLoading(false);
     }
-  };  //  signup function closes here, it is a function nested in a function
+  }; //  signup function closes here, it is a function nested in a function
 
   return { loading, signup };
-};  // useSignup hook closes here, this is essential, do not move it up or down
+}; // useSignup hook closes here, this is essential, do not move it up or down
 
 export default useSignup;
 
-function handleInputErrors({ fullName, username, password, confirmPassword, gender }) {
+function handleInputErrors({
+  fullName,
+  username,
+  password,
+  confirmPassword,
+  gender,
+}) {
   if (!fullName || !username || !password || !confirmPassword || !gender) {
     toast.error("All fields are required");
     return false;
