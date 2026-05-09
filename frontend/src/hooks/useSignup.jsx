@@ -31,6 +31,7 @@ const useSignup = () => {
       if(data.error){
         throw new Error(data.error)
       }
+      //we will save it to the local storage
       
     } catch (error) {
       toast.error(error.message);
