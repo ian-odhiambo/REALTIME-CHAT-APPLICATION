@@ -32,6 +32,7 @@ const useSignup = () => {
         throw new Error(data.error)
       }
       //we will save it to the local storage
+      //The context value will enable us 
       
     } catch (error) {
       toast.error(error.message);
