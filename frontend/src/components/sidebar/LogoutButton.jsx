@@ -11,7 +11,7 @@ const LogoutButton = () => {
           onClick={logout}
         />
       ) : (
-        <span className="loading loading-spinning"></span>
+        <span className="loading loading-spinner"></span>
       )}
     </div>
   );
