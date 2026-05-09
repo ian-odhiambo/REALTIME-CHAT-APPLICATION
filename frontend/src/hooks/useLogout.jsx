@@ -45,13 +45,14 @@ import { useAuthContext } from "../context/AuthContext.jsx";
 const useLogout = () => {
     const [loading, setLoading] = useState(false);
     const { setAuthUser } = useAuthContext();
+    
     const logOut = async () => {
         setLoading(true)
         try{
-
             const res = await fetch("/api/v1/auth/logout", {
                 method:"POST",
-                headers:{"Content-Type":"application/json"},});
+                headers:{"Content-Type":"application/json"},
+            });
             const data = await res.json();
             if(data.error){
                 throw new Error(data.error)
