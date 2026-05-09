@@ -96,7 +96,11 @@ const SignUp = () => {
             Already have an account?
           </Link>
           <div>
-            <button className="btn btn-block btn-sm mt-2 border-slate-700">Sign Up</button>
+            <button className="btn btn-block btn-sm mt-2 border-slate-700"
+            disabled={loading}
+            >{loading ? <><span className="loading loading-spinner"></span></> : "Sign Up"}</button>
+             {/* The code above is a conditional rendering that shows a loading spinner when the signup process is in progress, and the "Sign Up" text when it's not. The button is also disabled during loading to prevent multiple submissions. */}
+             {/* When the user clicks the "Sign Up" button, the handleSubmit function is called, which in turn calls the signup function from the useSignup hook with the current input state. The loading state is managed within the useSignup hook, and it updates based on the status of the signup process. */}           
           </div>
 
         </form> 
