@@ -16,7 +16,19 @@ const useSignup = () => {
         body: JSON.stringify({ fullName, username, password, confirmPassword, gender })
       });
 
-      const data = await res.json();
+      const text = await res.text();
+      let data;
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch (e) {
+        data = { error: text };
+      }
+
+      if (!res.ok) {
+        toast.error(data?.error || `Signup failed (${res.status})`);
+        return;
+      }
+
       console.log(data);
     } catch (error) {
       toast.error(error.message);
