@@ -52,12 +52,25 @@ export const signUp = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    let { username, password } = req.body;
+    username = typeof username === "string" ? username.trim() : username;
+
+    console.log("[LOGIN] received username:", username);
+    console.log(
+      "[LOGIN] received password length:",
+      typeof password === "string" ? password.length : "not-a-string",
+    );
+    console.log("[LOGIN] is username string:", typeof username === "string");
+
     const user = await User.findOne({ username });
+    console.log("[LOGIN] user found:", !!user);
+    console.log("[LOGIN] user._id:", user?._id);
+
     const isPasswordCorrect = await bcrypt.compare(
       password,
       user?.password || "",
     );
+    console.log("[LOGIN] password match:", isPasswordCorrect);
 
     if (!user || !isPasswordCorrect) {
       return res.status(400).json({ error: "Invalid username or password" });
@@ -76,6 +89,7 @@ export const login = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 
 export const logOut =  (req, res) => {
   try {
