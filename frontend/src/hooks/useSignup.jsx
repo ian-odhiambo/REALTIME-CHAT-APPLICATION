@@ -74,3 +74,4 @@ function handleInputErrors({
 
   return true;
 }
+
