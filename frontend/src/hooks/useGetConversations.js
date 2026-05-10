@@ -15,9 +15,11 @@ const useGetConversations = () => {
             }
         }catch(error){
             toast.error(error.message)
+        }finally{
+            setLoading(false);
         }
     }
  },[])
 }
 
-export default useGetConversations
+export default useGetConversations;
