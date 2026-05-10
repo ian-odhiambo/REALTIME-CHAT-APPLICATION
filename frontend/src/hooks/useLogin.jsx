@@ -39,7 +39,7 @@ export default useLogin;
 
 function handleInputErrors({username,password}) {
   if ( !username || !password ) {
-    toast.error("All fields are required");
+    toast.error("Please fill in all fields");
     return false;
   }
 
