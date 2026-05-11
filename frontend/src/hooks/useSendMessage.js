@@ -9,7 +9,7 @@ const useSendMessage = () => {
   const sendMessage = async(message) => {
     setLoading(true)
     try{
-        const res = await fetch(`/api/v1/messages/send/${selectedConversation._id}`, {
+        const res = await fetch(`/api/v1/message/send/${selectedConversation._id}`, {
             method:'POST',
             headers:{
                 'Content-Type': 'application/json'
@@ -18,7 +18,7 @@ const useSendMessage = () => {
         })
         const data = await res.json();
         if(data.error) throw new Error(data.error)
-        setMessages([...message,data])
+        setMessages((prev) => [...prev, data])
     }catch(error){
         toast.error(error.message);
     }finally{

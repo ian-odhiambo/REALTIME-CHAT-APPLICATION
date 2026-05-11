@@ -6,7 +6,7 @@ import useConversation from "../../zustand/useConversation";
 const MessageInput = () => {
   const[message, setMessage] = useState("");
   const {loading, sendMessage}= useSendMessage()
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if(!message) return;
     await sendMessage(message);
@@ -25,7 +25,7 @@ const MessageInput = () => {
           onChange={(e) => setMessage(e.target.value)}
         />
         <button type="submit" className="absolute inset-y-0 right-0 flex items-center pe-3">  
-          <BsSend />  
+          {loading ? <div className="loading loading-spinner loading-sm text-white"></div>: <BsSend /> } 
         </button>
       </div>
     </form>
