@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 
 const useGetMessages = () => {
   const [loading, setLoading] = useState(false);
-  const [message,setMessages] = useState([]);
   const {messages, setMessages,selectedConversation}= useConversation()
   
   useEffect(()=>{
@@ -23,9 +22,10 @@ const useGetMessages = () => {
     }
 
     if(selectedConversation?._id) getMessages();
-  },[selectedConversation?._id.setMessages])
+  }, [selectedConversation?._id, setMessages])
 
-  return {messages, loading}
+
+  return {messages, loading};
 }
 
-export default useGetMessages
+export default useGetMessages;
