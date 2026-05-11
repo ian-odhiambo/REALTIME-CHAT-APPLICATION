@@ -6,14 +6,15 @@ import useConversation from "../../zustand/useConversation";
 const MessageInput = () => {
   const[message, setMessage] = useState("");
   const {loading, sendMessage}= useSendMessage()
+  const { selectedConversation } = useConversation();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!message) return;
+    if (!message) return;
+    if (!selectedConversation?._id) return;
     await sendMessage(message);
-    setMessage("");  
-  
+    setMessage("");
   }
-
 
   return (
     <form className="px-4 my-3" onSubmit={handleSubmit}>
