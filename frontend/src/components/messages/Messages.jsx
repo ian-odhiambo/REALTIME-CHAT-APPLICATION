@@ -7,11 +7,15 @@ const Messages = () => {
   console.log("messages:", messages);
   return (
     <div className="px-4 flex-1 overflow-auto">
-        {loading && [...Array(3)].map((_, index) => <MessageSkeleton key={index} />)}
+       {!loading && messages.length > 0 && messages.map((message) => (
+         <Message key={message.id} message={message} />
+       ))}
 
+
+        {loading && [...Array(3)].map((_, index) => <MessageSkeleton key={index} />)}
         {!loading && messages.length === 0 && (
           <div className="flex items-center justify-center h-full">
-            <p className="text-gray-500">No messages yet. Start the conversation!</p>
+            <p className="text-white">No messages yet. Start the conversation!</p>
           </div>
         )}
     </div>
