@@ -16,9 +16,14 @@ const useSendMessage = () => {
             },
             body:JSON.stringify({message})
         })
+        if(!res.ok){
+            let text = "";
+            try{ text = await res.text(); } catch {}
+            throw new Error(text || `Failed to send message (status ${res.status})`);
+        }
         const data = await res.json();
-        if(data.error) throw new Error(data.error)
-        setMessages((prev) => [...prev, data])
+        if(data?.error) throw new Error(data.error)
+        setMessages((prev) => Array.isArray(prev) ? [...prev, data] : [data])
     }catch(error){
         toast.error(error.message);
     }finally{
