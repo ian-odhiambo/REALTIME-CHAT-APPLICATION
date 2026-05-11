@@ -1,5 +1,10 @@
+import useConversation from '../../zustand/useConversation'
+import { useAuthContext } from '../../context/AuthContext';
+
 const Message = ({message}) => {
   const {authUser} = useAuthContext();
+  const {selectedConversation} = useConversation();
+  const formMe = message.sender._id === authUser._id;
   return (
     <div className="chat chat-end">
         <div className="chat-image avatar">
