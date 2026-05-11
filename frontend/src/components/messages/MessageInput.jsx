@@ -12,8 +12,9 @@ const MessageInput = () => {
     e.preventDefault();
     if (!message) return;
     if (!selectedConversation?._id) return;
-    await sendMessage(message);
+// Clear immediately so UI doesn't get stuck if re-render/spinner occurs
     setMessage("");
+    await sendMessage(message);
   }
 
   return (
