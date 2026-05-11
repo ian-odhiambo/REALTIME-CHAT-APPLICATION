@@ -24,7 +24,8 @@ const useGetMessages = () => {
               throw new Error("Server returned a non-JSON response for messages");
             }
             if(data?.error) throw new Error(data.error)
-            setMessages(data)
+            // setMessages(data)
+            setMessages(data.messages || data)
 
         }catch(error){
             toast.error(error.message)
