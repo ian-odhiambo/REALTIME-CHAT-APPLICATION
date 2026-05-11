@@ -1,4 +1,5 @@
 const Message = ({message}) => {
+  const {authUser} = useAuthContext();
   return (
     <div className="chat chat-end">
         <div className="chat-image avatar">
