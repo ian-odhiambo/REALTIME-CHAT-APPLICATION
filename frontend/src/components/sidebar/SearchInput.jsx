@@ -2,6 +2,7 @@ import {useState} from "react"
 import { IoSearchSharp } from 'react-icons/io5'
 import useConversation from "../../zustand/useConversation";
 import useGetConversations from "../../hooks/useGetConversations"
+import toast from "react-hot-toast";
 
 const SearchInput = () => {
   const [search, setSearch] = useState("");
@@ -12,7 +13,7 @@ const SearchInput = () => {
     e.preventDefault();
     if(!search) return;
     if(search.length < 3) {
-      toast.error(search term must be at least three characters long)
+      return toast.error("Search term must be at least three characters long")
     }
   }
   return (
