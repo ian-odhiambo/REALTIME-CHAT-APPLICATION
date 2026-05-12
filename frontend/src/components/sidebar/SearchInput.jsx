@@ -9,14 +9,14 @@ const SearchInput = () => {
   const {setSelectedConversation}= useConversation();
   const { conversations } = useGetConversations();
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
     if(!search) return;
     if(search.length < 3) {
-      return toast.error("Search term must be at least three characters long")
+      return toast.error("Search term must be at least three characters long");
     }
     
-    const conversation = conversations.find((conv) => conv.fullName.LowerCase().includes(search.toLowerCase()));
+    const conversation = conversations.find((conv) => conv.fullName.toLowerCase().includes(search.toLowerCase()));
 
     if(conversation){
       setSelectedConversation(conversation);
@@ -24,7 +24,8 @@ const SearchInput = () => {
     } else {
       toast.error("No conversation found with that name");
     }
-    
+  }; // ← Added this closing brace for handleSubmit
+
   return (
     <form onSubmit={handleSubmit} className="flex items-center gap-2">
         <input type="text" placeholder="Search..." className="input input-bordered rounded-full"
