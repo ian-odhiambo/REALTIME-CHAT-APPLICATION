@@ -10,7 +10,7 @@ import userRoutes from "./routes/v1/user.route.js";
 
 //database import 
 import connectToMongoDB from "./db/connectToMongoDB.js";
-const app = express();
+
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
