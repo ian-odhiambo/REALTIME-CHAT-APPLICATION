@@ -1,13 +1,8 @@
-import {useEffect} from "react"
-import useGetMessages from "../../hooks/useGetMessages";
 import useConversation from "../../zustand/useConversation";
 import { useAuthContext } from "../../context/AuthContext";
 import { extractTime } from "../../utils/extractTime";
 
 const Message = ({ message }) => {
-  const {message, loading} = useGetMessages();
-  const lastMessageRef = useRef();
-  useEffect(()=>{},[])
   const { authUser } = useAuthContext();
   const { selectedConversation } = useConversation();
   const fromMe = authUser?._id && message.senderId === authUser._id;
