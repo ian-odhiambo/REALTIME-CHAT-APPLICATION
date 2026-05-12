@@ -17,10 +17,10 @@ export const signUp = async (req, res) => {
     //Hashed passwords here
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    // Replaced avatar generator with Dicebear avatars (same minimal change behavior)
+    // Replaced avatar generator with Dicebear avatars using current v6 endpoints
 
-    const boyProfilePic = `https://avatars.dicebear.com/api/bottts/${encodeURIComponent(username)}.svg`;
-    const girlProfilePic = `https://avatars.dicebear.com/api/avataaars/${encodeURIComponent(username)}.svg`;
+    const boyProfilePic = `https://api.dicebear.com/6.x/bottts/svg?seed=${encodeURIComponent(username)}`;
+    const girlProfilePic = `https://api.dicebear.com/6.x/avataaars/svg?seed=${encodeURIComponent(username)}`;
 
     const newUser = new User({
       fullName,
