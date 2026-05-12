@@ -6,7 +6,11 @@ import Message from "./Message";
 const Messages = () => {
   const {messages,loading} = useGetMessages();
   const lastMessageRef = useRef();
-  useEffect(() => {},[])
+  useEffect(() => {
+    setTimeout(() => {
+      lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  },[messages]);
   
   // console.log("messages:", messages);
   return (
