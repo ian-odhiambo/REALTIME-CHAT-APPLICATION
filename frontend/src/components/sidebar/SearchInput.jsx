@@ -22,9 +22,9 @@ const SearchInput = () => {
       setSelectedConversation(conversation);
       setSearch("");
     } else {
-      toast.error("No conversation found with that name");
+      toast.error("No such user found");
     }
-  }; // ← Added this closing brace for handleSubmit
+  }; 
 
   return (
     <form onSubmit={handleSubmit} className="flex items-center gap-2">
