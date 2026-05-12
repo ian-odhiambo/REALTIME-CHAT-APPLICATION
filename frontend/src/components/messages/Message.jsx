@@ -1,30 +1,36 @@
-import useConversation from '../../zustand/useConversation'
-import { useAuthContext } from '../../context/AuthContext';
-import { extractTime } from '../../utils/extractTime';
+import {useEffect} from "react"
+import useGetMessages from "../../hooks/useGetMessages";
+import useConversation from "../../zustand/useConversation";
+import { useAuthContext } from "../../context/AuthContext";
+import { extractTime } from "../../utils/extractTime";
 
-
-const Message = ({message}) => {
-  const {authUser} = useAuthContext();
-  const {selectedConversation} = useConversation();
+const Message = ({ message }) => {
+  const {message, loading} = useGetMessages();
+  const lastMessageRef = useRef();
+  useEffect(()=>{},[])
+  const { authUser } = useAuthContext();
+  const { selectedConversation } = useConversation();
   const fromMe = authUser?._id && message.senderId === authUser._id;
   const formattedTime = extractTime(message.createdAt);
-  const chatClassName = fromMe ? 'chat chat-end' : 'chat chat-start';
-  const profilePic = fromMe ? authUser.profilePic : selectedConversation.profilePic;
-  const bubbleBgColor = fromMe ? 'bg-blue-500 text-white' : '';
+  const chatClassName = fromMe ? "chat chat-end" : "chat chat-start";
+  const profilePic = fromMe
+    ? authUser.profilePic
+    : selectedConversation.profilePic;
+  const bubbleBgColor = fromMe ? "bg-blue-500 text-white" : "";
 
   return (
     <div className={`chat ${chatClassName}`}>
-        <div className="chat-image avatar">
-            <div className="w-10 rounded-full">
-                <img
-                alt="Tailwind CSS chat bubble component"
-                src={profilePic} />
-            </div>
+      <div className="chat-image avatar">
+        <div className="w-10 rounded-full">
+          <img alt="Tailwind CSS chat bubble component" src={profilePic} />
         </div>
-        <div className={`chat-bubble text-white ${bubbleBgColor}`}>{message.message}</div>
-        <div className="chat-footer opacity-50 text-xs flex gap-1">12:47</div>
+      </div>
+      <div className={`chat-bubble text-white ${bubbleBgColor}`}>
+        {message.message}
+      </div>
+      <div className="chat-footer opacity-50 text-xs flex gap-1">12:47</div>
     </div>
-  )
-}
+  );
+};
 
-export default Message
+export default Message;
