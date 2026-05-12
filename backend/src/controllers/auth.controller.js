@@ -17,10 +17,10 @@ export const signUp = async (req, res) => {
     //Hashed passwords here
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    //https://avatar-placeholder.iran.liara.run/
+    // Replaced avatar generator with Dicebear avatars (same minimal change behavior)
 
-    const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${encodeURIComponent(username)}`;
-    const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${encodeURIComponent(username)}`;
+    const boyProfilePic = `https://avatars.dicebear.com/api/bottts/${encodeURIComponent(username)}.svg`;
+    const girlProfilePic = `https://avatars.dicebear.com/api/avataaars/${encodeURIComponent(username)}.svg`;
 
     const newUser = new User({
       fullName,
@@ -90,8 +90,7 @@ export const login = async (req, res) => {
   }
 };
 
-
-export const logOut =  (req, res) => {
+export const logOut = (req, res) => {
   try {
     res.cookie("jwt", "", { maxAge: 0 });
     console.log("Logged out successfully");
