@@ -15,7 +15,9 @@ const SearchInput = () => {
     if(search.length < 3) {
       return toast.error("Search term must be at least three characters long")
     }
-  }
+    
+    const conversation = conversations.find((conv) => conv.fullName.LowerCase().includes(search.toLowerCase()));
+    
   return (
     <form onSubmit={handleSubmit} className="flex items-center gap-2">
         <input type="text" placeholder="Search..." className="input input-bordered rounded-full"
