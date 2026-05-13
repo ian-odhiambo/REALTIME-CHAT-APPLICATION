@@ -4,6 +4,10 @@ import io from "socket.io-client";
 
 export const socketContext = createContext();
 
+export const useAuthContext = () => {
+  return useContext(AuthContext);
+};
+
 export const SocketContextProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
