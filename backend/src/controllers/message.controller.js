@@ -31,13 +31,19 @@ export const sendMessage = async (req, res) => {
       conversation.messages.push(newMessage._id);
     }
 
-    //SOCKET IO WILL BE ADDED HERE 
+        //await conversation.save()
+        //await newMessage.save()
 
-    // Save the conversation and message
-    //await conversation.save()
-    //await newMessage.save()
-
+    //this will run in parallel
     await Promise.all([conversation.save(), newMessage.save()]);
+
+    //SOCKET IO WILL BE ADDED HERE 
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if(receiverSocketId) {
+      //io.to(<socket_id>).emit() used to send events to specific client
+      io.to(receiverSocketId).emit("newMessage", newMessage)
+    }
+
 
     res.status(201).json(newMessage);
   } catch (error) {
