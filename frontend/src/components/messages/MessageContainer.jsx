@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import useConversation from '../../zustand/useConversation'
 import Messages from "./Messages";
 import MessageInput from "./MessageInput";
+import { useAuthContext } from "../../context/AuthContext";
 import {TiMessages} from "react-icons/ti";
 
 const MessageContainer = () => {
