@@ -10,7 +10,7 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
   },
 });
-//socket.on() is used to listen to the events.can be used both on client and server side
+
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
 
