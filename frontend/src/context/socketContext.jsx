@@ -5,6 +5,7 @@ export const socketContext = createContext();
 export const SocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
     const [onlineUser, setOnlineUser] = useState([]);
+    const {authUser} = useAuthContext();
 
     useEffect(() => {},[]);
     return (
