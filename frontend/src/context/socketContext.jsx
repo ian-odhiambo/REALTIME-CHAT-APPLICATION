@@ -21,9 +21,7 @@ export const SocketContextProvider = ({ children }) => {
                 }
             });
 
-            // export const getReceiverSocketId = (receiverId) => {
-            //     return userSocketMap[receiverId];
-            // }
+            
 
             setSocket(socket);
 
