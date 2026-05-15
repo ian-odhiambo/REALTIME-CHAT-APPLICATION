@@ -31,7 +31,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/message", messageRoutes);
 app.use("/api/v1/users", userRoutes);
 
-app.use(express.static)
+app.use(express.static(path.join(__dirname, "/frontend/dist")))
 server.listen(PORT, () => {
   connectToMongoDB();
   console.log(`Server Running on port ${PORT}`);
