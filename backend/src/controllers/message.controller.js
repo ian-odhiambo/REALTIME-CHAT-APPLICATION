@@ -1,6 +1,7 @@
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/messages.model.js";
 import mongoose from "mongoose";
+import { io, getReceiverSocketId } from "../socket/socket.js";
 
 export const sendMessage = async (req, res) => {
   try {
@@ -31,19 +32,18 @@ export const sendMessage = async (req, res) => {
       conversation.messages.push(newMessage._id);
     }
 
-        //await conversation.save()
-        //await newMessage.save()
+    //await conversation.save()
+    //await newMessage.save()
 
     //this will run in parallel
     await Promise.all([conversation.save(), newMessage.save()]);
 
-    //SOCKET IO WILL BE ADDED HERE 
+    //SOCKET IO WILL BE ADDED HERE
     const receiverSocketId = getReceiverSocketId(receiverId);
-    if(receiverSocketId) {
+    if (receiverSocketId) {
       //io.to(<socket_id>).emit() used to send events to specific client
-      io.to(receiverSocketId).emit("newMessage", newMessage)
+      io.to(receiverSocketId).emit("newMessage", newMessage);
     }
-
 
     res.status(201).json(newMessage);
   } catch (error) {
@@ -52,23 +52,21 @@ export const sendMessage = async (req, res) => {
   }
 };
 
-
 export const getMessages = async (req, res) => {
-  try{
-    const{id:userToChatId} = req.params;
+  try {
+    const { id: userToChatId } = req.params;
     const senderId = req.user._id;
 
     const conversation = await Conversation.findOne({
-      participants: {$all: [senderId, userToChatId]},
+      participants: { $all: [senderId, userToChatId] },
     }).populate("messages"); // NOT REFERRENCE, BUT ACTUAL MESSAGES
 
-    if(!conversation) return res.status(201).json([])
+    if (!conversation) return res.status(201).json([]);
 
-      const messages = conversation.messages;
+    const messages = conversation.messages;
     res.status(200).json(messages);
-
-  }catch{
-    console.log("Error in the getMessages controller:", error.message)
-    res.status(500).json({error:"internal server error"})
+  } catch (error) {
+    console.log("Error in the getMessages controller:", error.message);
+    res.status(500).json({ error: "internal server error" });
   }
-}
+};
