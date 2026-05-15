@@ -22,16 +22,17 @@ const __dirname = path.resolve();
 
 app.use(express.json()); // allows us to parse incoming requests:req.body
 app.use(cookieParser());
-// app.get("/", (req, res) => {
-//   //root route http://localhost:5000
-//   res.send("hello world!!");
-// });
+
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/message", messageRoutes);
 app.use("/api/v1/users", userRoutes);
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")))
+
+app.get("*", (req,res) => {
+  res.sendFile(path.resolve(__dirname,"frontend", "dist", "index.html"))
+})
 server.listen(PORT, () => {
   connectToMongoDB();
   console.log(`Server Running on port ${PORT}`);
