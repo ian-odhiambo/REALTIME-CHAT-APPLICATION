@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:8000/"],
+    origin: ["http://localhost:8000", "http://localhost:8001"],
     methods: ["GET", "POST"],
   },
 });
@@ -31,7 +31,6 @@ io.on("connection", (socket) => {
     console.log("user disconnected", socket.id);
     delete userSocketMap[userId];
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
-    
   });
 });
 
