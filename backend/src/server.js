@@ -2,6 +2,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import path from "path"
 
 //routes
 import authRoutes from "./routes/v1/auth.routes.js";
@@ -16,6 +17,8 @@ import { app, server } from "./socket/socket.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
+
+const __dirname = path.resolve();
 
 app.use(express.json()); // allows us to parse incoming requests:req.body
 app.use(cookieParser());
